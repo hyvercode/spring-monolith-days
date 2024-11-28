@@ -1,10 +1,29 @@
-server:
-  port: ${PORT:8080}
-
 logging:
-  level:
-    org:
-      atmosphere: warn
+  pattern:
+    console: '%d{dd-MM-yyyy HH:mm:ss.SSS} [%-5level] [%-25thread] [%-36X{correlationId}] [%C{0}@%L]: %msg%n'
+
+server:
+  error:
+    include-message: always
+  port: ${PORT:8080}
+  #  tomcat:
+  #    accept-count: 10
+  #    connection-timeout: 1
+  #    max-connections: 15
+  #    threads:
+  #      max: 50
+  #      min-spare: 10
+  jetty:
+    threads:
+      idle-timeout: 6000
+      max: 500
+      max-queue-capacity: 50
+      min: 50
+      selectors: 1
+
+#  undertow:
+#    io-threads: (number of cpu) * 2
+#    worker-threads: '(number of cpu) * 10'
 
 spring:
   mustache:
@@ -12,14 +31,20 @@ spring:
   devtools:
     restart:
       additional-exclude: dev/hilla/openapi.json
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/vaadinstart
-#    username: vaadinstart
-#    password: vaadinstart
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:file:./h2/data/spring_monolith_days
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  main:
+    banner-mode: off
+  jackson:
+    property-naming-strategy: LOWER_CAMEL_CASE
+  flyway:
+    baselineOnMigrate: true
 
 vaadin:
   launch-browser: true
