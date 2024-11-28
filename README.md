@@ -1,7 +1,7 @@
 # Spring Boot Monolith with Vaadin React
 ## Stack
   - Spring Boot 3
-  - Modulith
+  - Spring Modulith
   - Webserver Jetty
   - Database H2
   - Vaadin React
