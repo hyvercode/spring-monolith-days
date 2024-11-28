@@ -1,0 +1,29 @@
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    org:
+      atmosphere: warn
+
+spring:
+  mustache:
+    check-template-location: false
+  devtools:
+    restart:
+      additional-exclude: dev/hilla/openapi.json
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/vaadinstart
+#    username: vaadinstart
+#    password: vaadinstart
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    defer-datasource-initialization: true
+
+vaadin:
+  launch-browser: true
+  allowed-packages:
+    - com.vaadin
+    - org.vaadin
+    - com.hyvercode.monolithdays
