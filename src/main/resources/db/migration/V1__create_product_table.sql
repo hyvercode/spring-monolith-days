@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS product (
     product_id              VARCHAR(36) NOT NULL PRIMARY KEY,
-    sku                     VARCHAR(36) NOT NULL UNIQUE,
+    product_code            VARCHAR(36) NOT NULL UNIQUE,
+    barcode                 VARCHAR(36) NOT NULL,
+    sku                     VARCHAR(36) NOT NULL,
     product_name            VARCHAR(60) NOT NULL,
     price                   DECIMAL(21,2) DEFAULT 0,
-    category_id             VARCHAR(36) NOT NULL,
-    inventory_id            VARCHAR(36) NOT NULL,
     is_active               BOOLEAN DEFAULT TRUE,
     created_by              VARCHAR(50) NULL,
     created_time            TIMESTAMP DEFAULT NOW(),
